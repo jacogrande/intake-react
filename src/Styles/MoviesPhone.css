@@ -1,0 +1,25 @@
+@media only screen and (max-width: 768px) {
+  #all-movies{
+    margin-bottom: 0px;
+  }
+  #movie-select {
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  #options {
+    float: right;
+  }
+
+  #options * {
+    float: right;
+  }
+
+  .poster-large-container {
+    width: 90%;
+    text-align: center;
+    margin-left: 28px;
+    margin-top: 25px;
+  }
+
+}

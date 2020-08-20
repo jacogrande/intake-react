@@ -1,0 +1,141 @@
+/* ===== Flex Styling ===== */
+
+.col {
+  flex: 1;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.row {
+  display: flex;
+}
+
+.column-direction {
+  flex-direction: column;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.half-col {
+  width: 49%;
+  margin-right: 1%;
+  margin-bottom: 1%;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.justify-left {
+  justify-content: left;
+}
+
+.justify-right {
+  justify-content: right;
+}
+
+.justify-center {
+  justify-items: center;
+}
+
+/* ===== Grid ===== */
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.left-heavy-grid {
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+
+.one-col-grid {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+/* ===== Margins ===== */
+.margin-top {
+  margin-top: 15px;
+}
+
+.margin-top-x {
+  margin-top: 22px;
+}
+
+.margin-right {
+  margin-right: 15px;
+}
+
+.margin-right-x {
+  margin-right: 40px;
+}
+
+.margin-left {
+  margin-left: 15px;
+}
+
+.margin-left-s {
+  margin-left: 7px;
+}
+
+.margin-left-x {
+  margin-left: 25px;
+}
+
+.margin-top-xx {
+  margin-top: 50px;
+}
+
+.vertical-padding {
+  padding-bottom: 50px;
+}
+
+.no-padding {
+  padding: 0px 0px;
+}
+
+.bump-up {
+  margin-top: -12px;
+}
+
+.no-margin-top {
+  margin-top: 0px;
+}
+
+
+.text-centered {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.full-width {
+  width: 100%;
+}
+
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}

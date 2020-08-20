@@ -1,0 +1,125 @@
+.Movies {
+  width: 90%;
+  margin: auto;
+  height: 100%;
+}
+
+.Movies-main {
+  width: 94%;
+  margin: auto;
+  height: 100%;
+  text-align: center;
+}
+
+.rating-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: #000;
+  float: left;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.rating-dot-filler {
+  background: #ef4ab5;
+  height: 10px;
+}
+
+.rating-dot.active {
+  background: #ef4ab5;
+}
+
+.rating-dot.white {
+  background: #fff;
+  transition: opacity 0.2s;
+  width: 7px;
+  height: 7px;
+}
+.rating-dot.white:hover {
+  background: #fff;
+  opacity: 0.9;
+  /* float: none; */
+  padding: none;
+}
+
+#all-movies {
+  width: 50%;
+  margin: 36px auto 20px auto;
+}
+
+#movie-select {
+  margin-top: 36px;
+  /* margin-right: ; */
+}
+
+.dialog {
+  background: black !important;
+}
+
+.noMovies {
+  width: 500px;
+  height: 500px;
+  margin-left: calc(50% - 250px);
+  text-align: center;
+  margin-top: 25px;
+}
+
+#big-add-button {
+  padding: 150px 175px;
+  background: #171e22;
+  border: 1px solid #96ddc2;
+  border-radius: 100%;
+  font-size: 100px;
+  transition: all 0.2s;
+}
+
+#big-add-button:hover {
+  background: #96ddc2;
+  cursor: pointer;
+}
+
+.upvote {
+  color: white;
+  background: #1e262a;
+  padding: 7px 7px;
+  border-radius: 100%;
+  margin-bottom: -11px;
+  margin-left: 15px;
+  transition: all 0.3s !important;
+}
+
+.upvote:hover {
+  color: #ef4ab5;
+  background: white;
+  cursor: pointer;
+}
+
+.upvote-selected {
+  color: #ef4ab5;
+  background: white;
+  padding: 7px 7px;
+  border-radius: 100%;
+  margin-bottom: -11px;
+  margin-left: 15px;
+  transition: all 0.3s !important;
+}
+
+.button-upvote {
+  background: none;
+  cursor: pointer;
+  padding: 0px 0px;
+  width: auto;
+  height: auto;
+  font-size: inherit;
+}
+
+.button-review-icon {
+  background: none;
+  transition: color 0.1s;
+}
+
+.button-review-icon:hover {
+  color: #ef4ab5;
+  cursor: pointer;
+}

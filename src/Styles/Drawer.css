@@ -1,0 +1,30 @@
+.drawer {
+  width: 500px;
+}
+
+.drawer-content {
+  height: 100%;
+  width: 450px;
+  outline: none;
+  border: 2px solid #000;
+  background-color: #171e22;
+  padding: 0px 15px;
+  color: #fff;
+  overflow: scroll;
+}
+
+#searchInput {
+  margin-left: -20px;
+  padding-left: 30px;
+}
+
+.small-input {
+  width: 25px;
+  background: black;
+  margin-left: 15px;
+  text-align: center;
+}
+
+input {
+  border-bottom: 2px solid #000;
+}

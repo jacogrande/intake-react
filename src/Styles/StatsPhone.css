@@ -1,0 +1,30 @@
+@media only screen and (max-width: 768px) {
+
+  .other-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .graph-container {
+    margin-bottom: 100px;
+  }
+  .bubble-container {
+    flex-direction: column;
+  }
+
+  .bubble {
+    flex: 1;
+    width: 100%;
+    height: 400px;
+  }
+
+  .legend {
+    text-align: center;
+    max-height: none;
+    overflow: none;
+  }
+
+  .legend-indicator {
+    margin: auto;
+  }
+
+}

@@ -1,0 +1,136 @@
+.Profile {
+  width: 90%;
+  margin-left: 5%;
+  text-align: center;
+}
+
+.identicon-wrapper {
+  width: 150px;
+  height:150px;
+  background: #171e22;
+  border-radius: 100%;
+  margin-left: 5%;
+}
+
+.avatar {
+  width: 125px;
+  height:125px;
+  margin-top:12.5px;
+  border-radius: 50%;
+}
+
+.identicon-wrapper-small {
+  width: 100px;
+  height: 100px;
+  background: #101518;
+  border-radius: 100%;
+}
+
+.avatar-small {
+  width: 85px;
+  height:85px;
+  margin-top:7.5px;
+  margin-left: 7.5px;
+  border-radius: 50%;
+}
+
+.username-title {
+  line-height: 20px;
+  font-size: 20px;
+  /* 150 / 2 - 16 / 2 */
+  padding: 65px 0px;
+  margin-left: 50px;
+}
+
+.username-title *{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.username-title-small {
+  line-height: 20px;
+  font-size: 20px;
+  padding: 41px 0px;
+  margin-left: 25px;
+}
+
+.username-title-small *{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.friend-grid {
+  display: grid;
+  width: 500px;
+  grid-template-columns: 100px 200px 200px;
+  border: 1px solid #171e22;
+  transition: border 0.2s;
+  text-decoration: none;
+  color: #fff;
+  padding-bottom: 10px;
+  border-radius: 5px;
+}
+
+.friend-grid:hover{
+  border-bottom: 1px solid #EF4AB5;
+  cursor: pointer;
+}
+
+div.friend-grid:hover{
+  cursor: default;
+  border: 1px solid #171e22;
+}
+
+.background-dark {
+  background: #13181b;
+  border: 1px solid #13181b;
+}
+
+.horizontal-padding{
+  padding: 0px 10px;
+}
+
+.banner-container {
+  border-bottom: 3px solid #171e22;
+  border-radius: 5px;
+  height: 160px;
+  width: 100%;
+}
+
+#profileButtons {
+  margin-right: 5%;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.profile-content input {
+  width: 300px;
+}
+
+.profile-alert {
+  border-radius: 100%;
+  padding: 2px 5px;
+  height: 12px;
+  line-height: 12px;
+  background: #EF4AB5;
+  font-size: 12px;
+  margin-top: -5px;
+  margin-right: -8px;
+  z-index: 2;
+}
+
+.friend-button {
+  width: 150px;
+  height: 40px;
+}

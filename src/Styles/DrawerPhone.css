@@ -1,0 +1,27 @@
+@media only screen and (max-width: 768px) {
+  .drawer {
+    width: 100vw;
+  }
+  .drawer-content {
+    width: calc(100vw - 30px);
+    padding: 0px 15px;
+  }
+
+  .drawer-body {
+    text-align: center;
+  }
+
+  img.half-col {
+    width: 300px;
+    margin: 20px auto;
+  }
+
+  .hover-scale:hover {
+    transform: none;
+  }
+
+  #rate-movie-form .row{
+    flex-direction: row;
+  }
+
+}

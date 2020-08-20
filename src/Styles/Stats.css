@@ -1,0 +1,144 @@
+.Stats {
+  width: 90%;
+  margin-left: 5%;
+  text-align: center;
+}
+
+.graph-container {
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.graph-container-large {
+  height: 300px;
+  width: 100%;
+  text-align: center;
+}
+
+.tooltip {
+  color: #171e22;
+}
+
+.tooltip-line {
+  background: #fff;
+  color: #171e22;
+  padding: 15px 10px;
+  border-radius: 5px;
+}
+
+.color-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  margin-right: 5px;
+  margin-top: 1px;
+}
+
+#calendar-container div div svg g text {
+  fill: #fff !important;
+}
+
+.slider {
+  margin: auto;
+}
+
+.bubble-container {
+  display: flex;
+}
+
+.bubble {
+  flex: 2;
+  height: 500px;
+  /* width: 500px; */
+  margin: auto;
+}
+
+.legend {
+  flex: 1;
+  max-height: 400px;
+  overflow: scroll;
+  margin: 50px 10px;
+  text-align: left;
+  /* border: 1px solid black; */
+}
+
+.legend-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+
+.legend-entry {
+  padding: 15px 0px;
+}
+
+.stat-select {
+  width: 300px;
+}
+.stat-search {
+  border-bottom: 2px solid #171e22;
+  width: 300px;
+}
+
+.search-results {
+  margin-top: -3px !important;
+  margin-bottom: 15px !important;
+  margin-left: 24px !important;
+  width: 304px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: #171e22;
+  /* opacity: ; */
+  position: absolute !important;
+  max-height: 200px;
+  overflow: scroll;
+  z-index: 2;
+}
+
+.search-result-wrapper {
+  padding: 5px 10px !important;
+  transition: all 0.2s !important;
+}
+
+.search-result-wrapper:hover {
+  background-color: #141a1f !important;
+  cursor: pointer;
+}
+
+.other-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.stat-link {
+  margin: auto;
+  height: 250px;
+  width: 250px;
+  border-radius: 100%;
+  border: 1px solid #96ddc2;
+  background: #171e22;
+  margin-bottom: 50px;
+  transition: all 0.3s;
+  color: white;
+  text-decoration: none;
+
+}
+
+.stat-link:hover {
+  color: black;
+  background: #96ddc2;
+  cursor: pointer;
+}
+
+.stat-link * {
+  font-size: 18px;
+  line-height: 215px;
+}
+
+.bubble-tooltip {
+  padding: 5px 10px;
+  border-radius: 10px;
+}

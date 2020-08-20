@@ -1,0 +1,66 @@
+@media only screen and (max-width: 768px) {
+  .grid {
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .two-col-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .landing-entry {
+    width: 80vw;
+    margin: auto;
+    padding-bottom: 50px;
+  }
+
+  .jumbotron {
+    height: calc(90vh - 68px);
+  }
+
+  .jumbotron h1 {
+    line-height: 80vh;
+  }
+
+  .jumbotron-filler {
+    height: calc(90vh - 68px);
+  }
+
+  .nav-link {
+    color: #171e22;
+    text-decoration: none;
+  }
+
+  .float-left, .float-right {
+    float: none;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .full-width {
+    width: 80vw;
+  }
+
+  .input-large {
+    width: 70vw;
+  }
+
+  .input-large-error {
+    width: 70vw;
+  }
+
+  .login-buttons {
+    margin: 10px auto;
+  }
+
+  .login-buttons button {
+    padding: 0px 0px;
+  }
+
+}

@@ -1,0 +1,79 @@
+@media only screen and (max-width: 768px) {
+  .explore-nav {
+    width: 1fr;
+  }
+
+  .feed-poster {
+    margin: auto;
+  }
+
+  .feed-title {
+    margin: auto;
+    text-align: center;
+  }
+
+  .feed-rating {
+    height: 400px;
+    text-align: center;
+  }
+
+  .feed-grid {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+  }
+
+  .feed-grid-one-col {
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .feed-item {
+    margin-bottom: 20px;
+  }
+
+  .user-container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .user-container-friend {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .identicon-wrapper {
+    margin-left: 0px;
+  }
+
+  .username {
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  .icons {
+    margin-top: 0px;
+  }
+
+  .banner-container {
+    text-align: center;
+    border: none;
+    height: auto;
+    display: grid;
+    justify-items: center;
+  }
+
+  .username-title {
+    margin: 0px 0px;
+    padding: 20px 0px;
+  }
+
+  #profileButtons {
+    margin-right: 0px;
+  }
+
+  .profile-content input {
+    width: 250px;
+  }
+
+}

@@ -1,0 +1,24 @@
+.Login {
+  width: 100%;
+}
+
+.login-form {
+  width: 400px;
+  margin-left: calc(50% - 200px);
+}
+
+.login-buttons {
+  display: grid;
+  grid-template-columns: 50% 33% 17%;
+  grid-column-gap: 0px;
+}
+
+.login-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 300px;
+  margin-left: calc(50% - 250px);
+  margin-top: calc(25% - 150px);
+}
