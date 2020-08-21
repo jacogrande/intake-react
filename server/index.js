@@ -1,5 +1,4 @@
 const express = require("express");
-const debug = require("debug")("index");
 const morgan = require("morgan");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -22,9 +21,9 @@ if (process.env.NODE_ENV === "production") {
 // mongoose implementation
 mongoose.connect(mongoUri, { useNewUrlParser: true });
 const db = mongoose.connection;
-db.on("error", () => debug("Connection error"));
+db.on("error", () => console.log("Connection error"));
 db.once("open", () => {
-  debug("mongodb online");
+  console.log("mongodb online");
 });
 
 const app = express();
@@ -76,4 +75,4 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
-app.listen(PORT, () => debug(`Socket to me on port ${PORT}...`));
+app.listen(PORT, () => console.log(`Socket to me on port ${PORT}...`));
