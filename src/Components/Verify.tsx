@@ -80,6 +80,8 @@ const Verify = () => {
     });
     if(response.status === 200){
       setSuccess(true);
+    } else {
+      setError(true);
     }
   };
 
@@ -109,7 +111,9 @@ const Verify = () => {
           Send Verification Email
         </button>
       </form>
-      {success && <p className="italics">Verification email sent.</p>}
+      <div className="vertical-padding"></div>
+      {success && <p className="italics text-centered">Verification email sent.</p>}
+      {error && <p className="italics text-centered">Verification should have already sent. If you don't receive it, wait an hour and try again. Thanks for your patience.</p>}
     </div>
   );
 };
