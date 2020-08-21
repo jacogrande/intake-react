@@ -42,7 +42,6 @@ app.use(
     ttl: 30 * 24 * 60 * 6,
     store: new MongoStore({
       mongooseConnection: db,
-      dbName: "intake",
     }),
   })
 );
