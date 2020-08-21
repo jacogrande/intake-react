@@ -42,7 +42,7 @@ app.use(
     ttl: 30 * 24 * 60 * 6,
     store: new MongoStore({
       mongooseConnection: db,
-      dbName: 'intake'
+      dbName: "intake",
     }),
   })
 );
@@ -68,5 +68,13 @@ app.use("/api/movies/", movieRouter);
 
 const friendRouter = require("./routers/friendRouter.js");
 app.use("/api/friends/", friendRouter);
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, "/build")));
+
+// Anything that doesn't match the above, send back index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/build/index.html"));
+});
 
 app.listen(PORT, () => debug(`Socket to me on port ${PORT}...`));
