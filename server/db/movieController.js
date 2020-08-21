@@ -464,7 +464,7 @@ const cleanupMovies = async () => {
     ]);
   }
 
-  await refreshPosters;
+  await refreshPosters();
 };
 
 module.exports = {
