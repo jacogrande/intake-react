@@ -311,7 +311,7 @@ userRouter.route("/sendVerificationToken").post(async (req, res) => {
       emailLink = `http://127.0.0.1:3000/verify/${token}`;
     }
     if (process.env.NODE_ENV === "production") {
-      emailLink = `https://www.intake.space/passwordReset/${token}`;
+      emailLink = `https://www.intake.space/verify/${token}`;
     }
 
     const sender = getMailAddress();

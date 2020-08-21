@@ -12,6 +12,7 @@ const Verify = () => {
   const [email, setEmail] = React.useState<string>("");
   const [finished, setFinished] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
+  const [success, setSuccess] = React.useState<boolean>(false);
   const { token } = useParams();
 
   // if the url contains a token, verify that token with api request
@@ -68,6 +69,7 @@ const Verify = () => {
 
   // make an api request to send verification email
   const handleSubmit = async (e: any) => {
+    setError(false);
     e.preventDefault();
     const response = await fetch("/api/user/sendVerificationToken", {
       method: "post",
@@ -76,7 +78,9 @@ const Verify = () => {
         "Content-Type": "application/json",
       },
     });
-    console.log(response);
+    if(response.status === 200){
+      setSuccess(true);
+    }
   };
 
   return (
@@ -105,6 +109,7 @@ const Verify = () => {
           Send Verification Email
         </button>
       </form>
+      {success && <p className="italics">Verification email sent.</p>}
     </div>
   );
 };
