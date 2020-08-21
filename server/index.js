@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "production") {
 // mongoose implementation
 mongoose.connect(mongoUri, { useNewUrlParser: true });
 const db = mongoose.connection;
-db.on("error", () => console.log("Connection error"));
+db.on("error", () => console.error("Connection error"));
 db.once("open", () => {
   console.log("mongodb online");
 });
