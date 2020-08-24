@@ -11,7 +11,7 @@ import { RootState } from "../redux";
 import { loadMovies } from "../redux/modules/movies";
 import { connect } from "react-redux";
 import { Dispatch, bindActionCreators } from "redux";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, Link } from "react-router-dom";
 import { PieDatum } from "@nivo/pie";
 import {
   ISortedStat,
@@ -25,7 +25,8 @@ import {
   IRatings,
 } from "../redux/modules/stats";
 import Breadcrumbs from "./Breadcrumbs";
-import { BrowserView } from "react-device-detect";
+import { BrowserView, isMobile } from "react-device-detect";
+import LazyLoad from "react-lazyload";
 
 export const Green = ["#E4FAF2", "#C4E3D8", "#A5CCBD", "#85B5A3", "#659E88"];
 export const Pink = ["#FFDAF2", "#EEAED8", "#DD83BD", "#CC57A3", "#BB2B88"];
@@ -43,7 +44,7 @@ export const colors = [
 ];
 
 /**
- * 
+ *
  * @param {ISortedStat[]} arr Array of values of the specified property
  * @param {number} total the sum of all the values of the specified property
  * @param colors array of colors
@@ -110,7 +111,7 @@ type properties =
   | "total_rating";
 
 /**
- * Function that sorts a dictionary of values 
+ * Function that sorts a dictionary of values
  * @param arr dictionary of values
  */
 const sortStats = (arr: IDict): ISortedStat[] => {
@@ -139,11 +140,11 @@ const titleMapping: { [key: string]: string } = {
   writer: "Writers",
   rated: "Content Ratings",
   runtime: "Runtimes",
-  year: "Years"
+  year: "Years",
 };
 
 /**
- * Statistic container component 
+ * Statistic container component
  * @param props props taken from redux store
  */
 const UnconnectedStats = (props: IStats) => {
@@ -302,7 +303,7 @@ const UnconnectedStats = (props: IStats) => {
           setReleaseDates(props.releaseDates as string[]);
           setThemes(props.themes as ISortedStat[]);
           setRatings(props.ratings as IRatings);
-        } 
+        }
       } else {
         getStats();
       }
@@ -326,79 +327,117 @@ const UnconnectedStats = (props: IStats) => {
 
   return (
     <div className="Stats text-centered margin-top">
-      {property ? (
-        <MetaTags>
-          <title>Your personal {value} movie statistics | INTAKE</title>
-          <meta
-            name="description"
-            content={`View statistics for all the movies you've seen with the ${titleMapping[
-              property
-            ].substring(
-              0,
-              titleMapping[property].length - 1
-            )} ${value}. See the average rating, the most common themes, genres, and content ratings, and content timelines.`}
-          />
-        </MetaTags>
-      ) : (
-        <MetaTags>
-          <title>Your personal movie statistics | INTAKE</title>
-          <meta
-            name="description"
-            content={`View statistics for all the movies you've submitted to your Intake feed. See the average rating, the most common themes, genres, and content ratings, and content timelines.`}
-          />
-        </MetaTags>
-      )}
-      {property && <Breadcrumbs crumbs={crumbs} />}
-      <h1>
-        {property
-          ? `${title.substring(0, title.length - 1)}: ${value}`
-          : "All Movies"}
-      </h1>
-      {movieList?.length === 0 ? (
-        <p className="grey italics">
-          You don't have any movies that can be used to collect these
-          statistics.{" "}
-          <NavLink to="/movies" className="green link">
-            Add More
-          </NavLink>
-        </p>
-      ) : (
-        <>
-          <p className="green italics">Movies Seen: {movieList?.length}</p>
-          <div className="two-col-grid">
-            <Pie data={themes} title="Themes" />
-            <Pie
-              data={ratings.others}
-              title="Average Rating"
-              titleExtension={`: ${ratings.total}`}
+      <div className={property ? "border-bottom" : ""}>
+        {property ? (
+          <MetaTags>
+            <title>Your personal {value} movie statistics | INTAKE</title>
+            <meta
+              name="description"
+              content={`View statistics for all the movies you've seen with the ${titleMapping[
+                property
+              ].substring(
+                0,
+                titleMapping[property].length - 1
+              )} ${value}. See the average rating, the most common themes, genres, and content ratings, and content timelines.`}
             />
-            <Pie data={genres} title="Genres" />
-            <Pie data={contentRatings} title="Content Ratings" />
-          </div>
-          <BrowserView>
-            <ViewingTimeline dates={datesAdded} />
-            <div className="vertical-padding"></div>
-            <ReleaseTimeline dates={releaseDates} />
-            <div className="vertical-padding"></div>
-            <div className="vertical-padding"></div>
-          </BrowserView>
-          {!property && (
-            <div className="margin-top">
-              <h1>Other Stats</h1>
-              <div className="other-stats">
-                {otherStats.map((title) => (
-                  <NavLink
-                    to={`/stats/${title}`}
-                    className="stat-link"
-                    key={title}
-                  >
-                    <p>{title}</p>
-                  </NavLink>
-                ))}
-              </div>
+          </MetaTags>
+        ) : (
+          <MetaTags>
+            <title>Your personal movie statistics | INTAKE</title>
+            <meta
+              name="description"
+              content={`View statistics for all the movies you've submitted to your Intake feed. See the average rating, the most common themes, genres, and content ratings, and content timelines.`}
+            />
+          </MetaTags>
+        )}
+        {property && <Breadcrumbs crumbs={crumbs} />}
+        <h1>
+          {property
+            ? `${title.substring(0, title.length - 1)}: ${value}`
+            : "All Movies"}
+        </h1>
+        {movieList?.length === 0 ? (
+          <p className="grey italics">
+            You don't have any movies that can be used to collect these
+            statistics.{" "}
+            <NavLink to="/movies" className="green link">
+              Add More
+            </NavLink>
+          </p>
+        ) : (
+          <>
+            <p className="green italics">Movies Seen: {movieList?.length}</p>
+            <div className="two-col-grid">
+              <Pie data={themes} title="Themes" />
+              <Pie
+                data={ratings.others}
+                title="Average Rating"
+                titleExtension={`: ${ratings.total}`}
+              />
+              <Pie data={genres} title="Genres" />
+              <Pie data={contentRatings} title="Content Ratings" />
             </div>
-          )}
-        </>
+            <BrowserView>
+              <ViewingTimeline dates={datesAdded} />
+              <div className="vertical-padding"></div>
+              <ReleaseTimeline dates={releaseDates} />
+              <div className="vertical-padding"></div>
+              <div className="vertical-padding"></div>
+            </BrowserView>
+            {!property && (
+              <div className="margin-top">
+                <h1>Other Stats</h1>
+                <div className="other-stats">
+                  {otherStats.map((title) => (
+                    <NavLink
+                      to={`/stats/${title}`}
+                      className="stat-link"
+                      key={title}
+                    >
+                      <p>{title}</p>
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+      {property && (
+        <div className="margin-top">
+          <h1>Movies</h1>
+          <div className="posters-container">
+            {movieList?.map((movie) => (
+              <div className="poster-wrapper" key={movie._id}>
+                <LazyLoad
+                  height={500 / 1.75}
+                  offset={200}
+                  once
+                  key={movie.title}
+                >
+                  <Link to={`/movies/${movie._id}`}>
+                    <img
+                      src={
+                        movie.poster.substring(0, movie.poster.length - 7) +
+                        "300.jpg"
+                      }
+                      className="poster-medium hover-scale"
+                      alt={movie.title}
+                      aria-label={`${movie.title} | ${movie.total_rating}/20`}
+                    />
+                    <div className="hoverText">
+                      <p>
+                        {movie.total_rating} <br></br>{" "}
+                        <span className="overlined">20</span>
+                      </p>
+                    </div>
+                  </Link>
+                </LazyLoad>
+                {isMobile && <p>{movie.total_rating} / 20</p>}
+              </div>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );
