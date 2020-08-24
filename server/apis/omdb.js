@@ -17,6 +17,10 @@ module.exports = (() => {
    * @param {string} title string to use as omdb query
    */
   const getMovies = async (title) => {
+    title=encodeURI(title);
+    if(title.indexOf("&") !== -1) {
+      title = title.replace("&", "%26");
+    }
     const response = await axios.get(
       `https://www.omdbapi.com/?apikey=${omdb_api_key}&s=${title}`
     );
