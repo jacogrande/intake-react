@@ -403,6 +403,8 @@ const refreshPosters = async () => {
       movieTitle = movieTitle.replace(" - ", "-");
     }
     const movie = await omdb.getMovies(movieTitle);
+    console.log(movieTitle);
+    console.log(movie);
     if (movie instanceof Array) {
       const selectedMovie = movie.find(
         (selection) => selection.Title === allMovies[i].title
