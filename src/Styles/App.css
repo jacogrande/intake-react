@@ -83,7 +83,7 @@ p.crumb {
 }
 
 .grey {
-  color: rgb(148, 168, 179);
+  color: #9da9af;
 }
 
 .true-white {
@@ -121,7 +121,7 @@ p.crumb {
 
 .italics {
   font-style: italic;
-  color: rgb(148, 168, 179);
+  color: #9da9af;
 }
 
 .fade-in {

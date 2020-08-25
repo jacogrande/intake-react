@@ -12,6 +12,7 @@ import { loadMovies, IMovieData } from "../redux/modules/movies";
 import { connect } from "react-redux";
 import { Dispatch, bindActionCreators } from "redux";
 import { isMobile, isBrowser } from "react-device-detect";
+import SearchIcon from "@material-ui/icons/Search";
 
 const mapStateToProps = (state: RootState) => ({
   movies: state.movies.movies,
@@ -31,6 +32,10 @@ const UnconnectedMovies = (props: IMovies) => {
   const [movies, setMovies] = React.useState<IMovieData[]>([]);
   const [open, setOpen] = React.useState<boolean>(false);
   const [filter, setFilter] = React.useState<string>("Title");
+  const [search, setSearch] = React.useState<string>("");
+  const [searchResults, setSearchResults] = React.useState<IMovieData[] | null>(
+    null
+  );
 
   // Whenever the filter is changed, re-sort the movie array
   React.useEffect(() => {
@@ -75,6 +80,18 @@ const UnconnectedMovies = (props: IMovies) => {
 
   const closeDrawer = () => setOpen(false);
 
+  const handleSearchChange = (e: any) => {
+    const query = e.target.value;
+    setSearch(query);
+    query
+      ? setSearchResults(
+          movies.filter((movie) =>
+            movie.title?.toLowerCase().includes(query.toLowerCase())
+          )
+        )
+      : setSearchResults(null);
+  };
+
   // JSX component for users with no movies
   const noMovies = (
     <div className="Movies margin-top noMovies">
@@ -105,6 +122,8 @@ const UnconnectedMovies = (props: IMovies) => {
     </div>
   );
 
+  const renderedMovies: IMovieData[] = searchResults ? searchResults : movies;
+  const noResults = searchResults && searchResults.length === 0;
   // JSX component for users with movies added
   const hasMovies = (
     <div className="Movies-main margin-top">
@@ -115,24 +134,44 @@ const UnconnectedMovies = (props: IMovies) => {
           content="See all of the movies you've entered into your Intake. Sort them by their rating, the date you watched them, or their title. Click a movie for more information."
         />
       </MetaTags>
-      {isMobile && <h1 id="all-movies">All Movies</h1>}
-      <form onSubmit={(e) => e.preventDefault()} id="movie-select">
-        <select
-          aria-label="select filter"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-          className="float-right margin-top"
+      <h1 id="all-movies">All Movies</h1>
+      <div className="two-col-grid margin-top">
+        <form onSubmit={(e) => e.preventDefault()} id="movie-select">
+          <select
+            aria-label="select filter"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            className="float-right margin-top"
+          >
+            <option value="Title">Title</option>
+            <option value="Date Viewed">Date Viewed</option>
+            <option value="Rating">Rating</option>
+          </select>
+        </form>
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="align-left bump-down-form"
+          id="movies-searchbar"
         >
-          <option value="Title">Title</option>
-          <option value="Date Viewed">Date Viewed</option>
-          <option value="Rating">Rating</option>
-        </select>
-      </form>
-      {isBrowser && <h1 id="all-movies">All Movies</h1>}
-      
-      <div className="posters-container">
-        {movies &&
-          movies.map((movie) => (
+          <div className="inline-flex">
+            <SearchIcon className="form-icon" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="explore-input"
+              value={search}
+              onChange={handleSearchChange}
+            />
+          </div>
+        </form>
+      </div>
+      {noResults && (
+        <p className="italics text-centered">No movies match your search.</p>
+      )}
+
+      <div className="posters-container margin-top">
+        {renderedMovies &&
+          renderedMovies.map((movie) => (
             <div className="poster-wrapper" key={movie._id}>
               <LazyLoad height={500 / 1.75} offset={200} once key={movie.title}>
                 <Link to={`/movies/${movie._id}`}>

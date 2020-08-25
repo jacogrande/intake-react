@@ -22,4 +22,9 @@
     margin-top: 25px;
   }
 
+  #movies-searchbar {
+    width: 225px;
+    margin: 0px auto 25px auto;
+  }
+
 }

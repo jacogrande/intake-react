@@ -48,9 +48,8 @@
   margin: 36px auto 20px auto;
 }
 
-#movie-select {
-  margin-top: 36px;
-  /* margin-right: ; */
+#movie-select select{
+  width: 200px;
 }
 
 .dialog {
@@ -122,4 +121,8 @@
 .button-review-icon:hover {
   color: #ef4ab5;
   cursor: pointer;
+}
+
+#movies-searchbar{
+  margin-bottom: 25px;
 }
