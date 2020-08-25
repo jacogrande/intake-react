@@ -319,7 +319,7 @@ const UnconnectedMovieRatings = (props: IMovieRatings) => {
               <p className="green">Total Rating: </p>
               <p>{movie.total_rating}/20</p>
               <p className="green">Date Viewed:</p>
-              <p>{moment(movie.date_added.date).format("MM-DD-YYYY")}</p>
+              <p>{moment(movie.date_added.date).format("MMM DD, YYYY")}</p>
             </div>
             <div className={isMobile ? "feed-grid-one-col" : ""}>
               <p>
