@@ -467,6 +467,14 @@ const cleanupMovies = async () => {
   await refreshPosters();
 };
 
+const cleanupMovieDates = async () => {
+  const movies = await Movie.find();
+  movies.forEach((movie) => {
+    movie.date_added.forEach((date) => date.date = new Date(date.date));
+    movie.save();
+  });
+}
+
 module.exports = {
   addMovie,
   findMovieByTitle,
@@ -488,5 +496,6 @@ module.exports = {
   findMoviesByFeed,
   getMoviesByFilter,
   cleanupMovies,
-  findLikeNames,
+  findLikeNames, 
+  cleanupMovieDates
 };

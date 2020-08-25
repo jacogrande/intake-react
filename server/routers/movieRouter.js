@@ -499,4 +499,19 @@ movieRouter.route("/cleanup").get(async (req, res) => {
   }
 });
 
+movieRouter.route("/cleanupDates").get(async (req, res) => {
+  if (db.checkCredentials(req.query.admin_key)) {
+    try {
+      await movieController.cleanupMovieDates();
+    } catch(err) {
+      console.error(err);
+      return res.sendStatus(500);
+    }
+    return res.sendStatus(200);
+  } else {
+    return res.sendStatus(401);
+  }
+});
+
+
 module.exports = movieRouter;

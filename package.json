@@ -68,7 +68,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "env NODE_ENV=dev DEBUG=index nodemon server/index.js"
+    "serve": "env NODE_ENV=dev DEBUG=index nodemon server/index.js",
+    "dev": "react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
