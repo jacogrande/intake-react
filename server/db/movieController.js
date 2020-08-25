@@ -470,7 +470,7 @@ const cleanupMovies = async () => {
 const cleanupMovieDates = async () => {
   const movies = await Movie.find();
   movies.forEach((movie) => {
-    movie.date_added.forEach((date) => date.date = new Date(date.date));
+    movie.date_added.forEach((date) => date.date = new Date(parseInt(date.date)));
     movie.save();
   });
 }

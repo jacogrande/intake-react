@@ -33,14 +33,14 @@ const MovieSchema = new mongoose.Schema({
   runtime: String,
   poster: String,
   date_added: [{
-    date: { type: String, default: Date.now().toString() },
+    date: { type: String, default: new Date().toString() },
     user_id: String,
   }],
   reviews: [{
     review: String,
     user_id: String,
     username: String,
-    date_added: { type: String, default: Date.now().toString() },
+    date_added: { type: String, default: new Date().toString() },
     upvotes: { type: Number, default: 0 },
     upvoted_by: [String],
   }],
